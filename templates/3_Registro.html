@@ -6,7 +6,7 @@
 <nav class="barra_navegacion">  
     <img src="{% static 'img/sistema.png' %}" alt="Logo de Solventa" class="logo-nav">  
     <div class="nav-links">  
-        <a href="{% url 'PaginaInicio' %}">Volver</a>  
+        <a href="{% url 'crud' %}">Volver</a>  
     </div>
 </nav>
 {% endblock %}  
@@ -24,7 +24,7 @@
 {% if 'success' in request.GET %}  <!-- Comprueba si hay un parámetro 'success' en la URL, lo que mencione en las views-->
 <script>
     alert('Usuario creado correctamente');  // Muestra una alerta al usuario
-    window.location.href = "{% url 'login' %}";  // Redirige a la página de inicio después de mostrar el alert 
+    window.location.href = "{% url 'crud' %}";  // Redirige a la página de inicio después de mostrar el alert 
 </script>
 {% endif %}
 

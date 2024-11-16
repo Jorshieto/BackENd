@@ -16,5 +16,6 @@ urlpatterns = [
    # URLs de login app
     path('login/', loginApp_views.login_usuario, name='login'),  # Asegúrate de usar `login_usuario`
     path('registro/', loginApp_views.registro, name='registro'),
+    path('logout/', loginApp_views.cerrar_sesion, name='logout'),
 ]
 

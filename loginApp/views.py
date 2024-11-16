@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.models import Group
 from .forms import RegistroUsuario
+from django.contrib.auth import logout
 
 def login_usuario(request):
     if request.method == 'POST':
@@ -39,4 +40,6 @@ def registro(request):
 
     return render(request, '3_registro.html', {'form': form})  # Renderizar la plantilla de registro
 
-
+def cerrar_sesion(request):
+    logout(request)  # Cierra la sesión
+    return redirect('login')  # Redirige a la página de login después de cerrar sesión
