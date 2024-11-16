@@ -38,7 +38,6 @@ class Ticket(models.Model):
         ('alta', 'Alta'),
         ('media', 'Media'),
         ('baja', 'Baja'),
-        ('----' , '----')
     ]
     
     # Campos del modelo
@@ -52,9 +51,9 @@ class Ticket(models.Model):
     descripcion = models.TextField(null=True, blank=True)  # Campo opcional
 
     # Estado: Definir valor por defecto 'abierto', que es un valor válido en ESTADOS
-    estado = models.CharField(max_length=20, choices=ESTADOS, default='abierto')  # El valor por defecto debe ser uno de los valores en ESTADOS
+    estado = models.CharField(max_length=50, choices=ESTADOS)  # El valor por defecto debe ser uno de los valores en ESTADOS
     retroalimentacion_soporte = models.TextField(null=True, blank=True)  # Campo opcional
-    satisfaccion_cliente = models.CharField(max_length=10, choices=SATISFACCION, default='----')
+    satisfaccion_cliente = models.CharField(max_length=50, choices=SATISFACCION)
 
     def __str__(self):
         return self.nombre
