@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'firstApp', #indico que la app firtApp creada por mi pertenece a las app instaladas
-    'loginApp'
+    'loginApp',
+    'securityApp',
 ]
 
 MIDDLEWARE = [
