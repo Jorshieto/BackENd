@@ -1,0 +1,38 @@
+{% extends '0_base.html' %} <!--extiende de mi plantilla base -->
+{% load static %} <!-- Carga el sistema de archivos estáticos de Django -->
+
+{% block content %}
+    
+    {% block navbar %}
+    <nav class="barra_navegacion"> <!-- Bloque para la barra de navegación -->
+        <img src="{% static 'img/sistema.png' %}" alt="Logo de Solventa" class="logo-nav">
+        <div class="nav-links">  <!-- Añadido un div para contener los enlaces de navegacion-->
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="{% url 'login' %}">Iniciar Sesion</a>
+        </div>
+    </nav>
+    {% endblock %}
+
+    <!-- Sección de bienvenida -->
+    <section id="inicio" class="content">
+        <h2 class="title">Bienvenido a Solventa: Tu Plataforma de Gestión Técnica</h2>
+        <p class="texto">¿Buscas una plataforma eficaz para administrar tu equipo de servicio técnico? ¡Has llegado al lugar indicado!</p>
+        <p class="texto">Bienvenido a Solventa, tu aliado en la gestión técnica. Nuestra solución innovadora te permite llevar el control total de tu equipo de trabajo y los tickets de soporte, asegurando que cada tarea se maneje de manera óptima y sin interrupciones. Explora cómo nuestra plataforma puede transformar tu manera de operar y facilitarte alcanzar tus objetivos con eficiencia.</p>
+    </section>
+
+    <!-- Sección sobre la empresa -->
+    <section id="nosotros" class="content">
+        <h2 class="title">Conoce a Solventa: Innovación y Eficiencia en Gestión Técnica</h2>
+        <p class="texto">En Solventa, entendemos la importancia de una gestión técnica eficiente. Nos dedicamos a proporcionarte una plataforma que te permite supervisar y optimizar los recursos de tu equipo, facilitando la comunicación y el seguimiento de cada ticket de soporte. Con un enfoque en la innovación y la personalización, nuestro objetivo es potenciar el rendimiento de tu equipo y garantizar la satisfacción de tus clientes.</p>
+    </section>
+
+    <div class="content"></div>
+
+    <div class="d-flex justify-content-center"><!-- utilize flexbox para centrar el contenido -->
+        <img src="{% static 'img/sistema.png' %}" alt="Imagen corporativa" class="img-fluid ">
+    </div>
+    
+
+{% endblock %}
+

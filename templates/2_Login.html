@@ -1,0 +1,38 @@
+{% extends '0_base.html' %}  
+{% load static %} 
+
+{% block content %}  
+{% block navbar-login %}  <!--carga la barra de navegación específica del login -->
+<nav class="barra_navegacion">  
+    <img src="{% static 'img/sistema.png' %}" alt="Logo de Solventa" class="logo-nav">  <!-- Logo de la empresa -->
+    <div class="nav-links"> 
+        <a href="{% url 'PaginaInicio' %}">Volver</a>  <!-- Enlace para volver a la página de inicio -->
+    </div>
+</nav>
+{% endblock %}  
+
+<div class="d-flex justify-content-center align-items-center min-vh-100">  <!-- Contenedor centrado vertical y horizontalmente -->
+    <div class="form-container">  <!-- Contenedor del formulario -->
+        
+        {% if messages %}  <!-- Comprueba si hay mensajes para mostrar -->
+            <div class="alert alert-danger text-center mb-4">  <!-- Alerta de mensajes de error, centrada y con margen inferior -->
+                {% for message in messages %}  <!-- Itera sobre cada mensaje -->
+                    <p>{{ message }}</p>  <!-- Muestra el contenido del mensaje -->
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form class="formulario-registro" id="formulario" action="{% url 'login' %}" method="post">  <!-- Formulario de inicio de sesión -->
+            <h1 class="inicio text-center">Iniciar sesión</h1>  <!-- Título del formulario -->
+            {% csrf_token %}  <!-- Token de seguridad para evitar ataques CSRF -->
+            <div class="form-group"> 
+                <input type="text" name="username" id="username" class="controls" placeholder="Ingrese su usuario" required>  
+            </div>
+            <div class="form-group">  
+                <input type="password" name="password" id="password" class="controls" placeholder="Ingrese su contraseña" required>  
+            </div>
+            <button type="submit" class="boton w-100 btn btn-primary">Iniciar Sesión</button>  <!-- Botón para enviar el formulario -->
+        </form>
+    </div>
+</div>
+{% endblock %}  

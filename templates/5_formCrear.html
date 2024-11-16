@@ -1,0 +1,40 @@
+{% extends '0_base.html' %} 
+{% load static %} 
+
+{% block content %}  
+<nav class="barra_navegacion"> 
+    <img src="{% static 'img/sistema.png' %}" alt="Logo de Solventa" class="logo-nav">  
+    <h1 class="text-center Tituloticket">Crear Ticket</h1>  <!-- Título de la página -->
+    <div class="nav-links">  
+        <a href="{% url 'crud' %}">Cancelar</a>  <!-- Enlace para cancelar y regresar a la página CRUD -->
+    </div>
+</nav>
+
+<div class="card mx-auto" style="max-width: 400px; top: 70px; position: relative;">  <!-- Contenedor de tarjeta centrado -->
+    <div class="text-center Formcolor">  <!-- Contenedor con color de fondo -->
+        <div class="card-body">  <!-- Cuerpo de la tarjeta -->
+            <form method="POST">  
+                {% csrf_token %}  
+                <div class="form-group">  <!-- Contenedor para los campos del formulario -->
+                    {% for field in form %}  <!-- Itera sobre cada campo del formulario -->
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>  <!-- Etiqueta del campo -->
+                        {{ field }}  <!-- Renderiza el campo del formulario -->
+                        {% if field.errors %}  <!-- Verifica si hay errores en el campo -->
+                            <div class="text-danger">  <!-- Contenedor para errores -->
+                                {% for error in field.errors %}  <!-- Itera sobre los errores del campo -->
+                                    {% if error != "Este campo es obligatorio." %}  <!-- tuve que hacerlo asi sino aparece el mensaje aun que no haya error :c  -->
+                                        <p>{{ error }}</p>  <!-- Muestra el error -->
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="button-container">  <!-- Contenedor para el botón de envío -->
+                        <button type="submit" class="btn btn-primary">ENVIAR</button>  <!-- Botón para enviar el formulario -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}  <!-- Fin del bloque de contenido -->

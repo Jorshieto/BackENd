@@ -1,0 +1,31 @@
+{% extends '0_base.html' %}  <!-- Extiende de una plantilla base llamada '0_base.html' -->
+{% load static %}  
+
+{% block content %}  
+{% block navbar-login %}  
+<nav class="barra_navegacion">  
+    <img src="{% static 'img/sistema.png' %}" alt="Logo de Solventa" class="logo-nav">  
+    <div class="nav-links">  
+        <a href="{% url 'PaginaInicio' %}">Volver</a>  
+    </div>
+</nav>
+{% endblock %}  
+
+<h2 class="title content text-center">Crear una Cuenta Nueva</h2>  <!-- Título de la sección de registro, centrado -->
+
+<div class="container d-flex justify-content-center align-items-center">  <!-- Contenedor flex para centrar el formulario -->
+    <form method="post" class="formulario_login">  <!-- Formulario para el registro de usuario -->
+        {% csrf_token %}  
+        {{ form.as_p }}  <!-- Renderiza el formulario utilizando la forma de párrafo, cada campo en un nuevo párrafo -->
+        <button type="submit" class="btn btn-primary">Registrarse</button>  <!-- Botón para enviar el formulario -->
+    </form>
+</div>
+
+{% if 'success' in request.GET %}  <!-- Comprueba si hay un parámetro 'success' en la URL, lo que mencione en las views-->
+<script>
+    alert('Usuario creado correctamente');  // Muestra una alerta al usuario
+    window.location.href = "{% url 'login' %}";  // Redirige a la página de inicio después de mostrar el alert 
+</script>
+{% endif %}
+
+{% endblock %}  

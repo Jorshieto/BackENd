@@ -1,0 +1,96 @@
+{% extends '0_base.html' %}
+{% load static %}
+
+{% block content %}
+<body class="container mt-5">
+    {% block navbar-login %}
+    <nav class="barra_navegacion">  
+        <img src="{% static 'img/sistema.png' %}" alt="Logo de Solventa" class="logo-nav">
+        <div class="nav-links">  
+            <a href="{% url 'login' %}" class="btn cerrar-sesion">Cerrar Sesión</a>
+        </div>
+    </nav>
+    {% endblock %}
+
+    <div class="imagen-corporativa">
+        <div class="d-flex justify-content-center">
+            <img src="{% static 'img/sistema.png' %}" alt="Imagen corporativa" class="img-fluid img-corporativa">
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="table-responsive col-md-10 border rounded p-3">
+            <div class="d-flex justify-content-between mb-2"> 
+                <!-- Botón de registrar nuevo usuario alineado a la izquierda -->
+
+                    <a href="{% url 'registro' %}" class="btn btn-success btn-sm">
+                        Registrar Nuevo usuario
+                    </a>
+     
+    
+                <!--esto los deben ver los admin y los jefe_area-->
+      
+                    <a href="{% url 'crear_ticket' %}" id="openFormBtn" class="btn btn-success btn-sm">
+                        <i class="bi bi-plus"></i> Nuevo Ticket
+                    </a>
+           
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-striped table-inverse">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Email</th>
+                            <th>Área</th>
+                            <th>Servicio</th>
+                            <th>Prioridad</th>
+                            <th>Encargado</th>
+                            <th>Descripción del Problema</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if tickets %}
+                            {% for ticket in tickets %}
+                            <tr>
+                                <td>{{ ticket.id }}</td>
+                                <td>{{ ticket.nombre }}</td>
+                                <td>{{ ticket.fono }}</td>
+                                <td>{{ ticket.email }}</td>
+                                <td>{{ ticket.area }}</td>
+                                <td>{{ ticket.servicio }}</td>
+                                <td>{{ ticket.prioridad }}</td>
+                                <td>{{ ticket.encargado }}</td>
+                                <td>{{ ticket.descripcion_del_problema }}</td>
+                                <td>
+                                <!--esto los deben ver los admin y los jefe_area-->
+                                        <a href="#" class="btn btn-success btn-sm" onclick="confirmAction('actualizar', '{{ ticket.id }}')">
+                                            <i>✏️</i>
+                                        </a>
+                               <!--esto los deben ver los admin-->
+                                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmAction('eliminar', '{{ ticket.id }}')">
+                                            <i>🗑️</i>
+                                        </a>
+                               
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="10" class="text-center">
+                                    <div class="alert alert-primary" role="alert">
+                                        <strong>No se encuentran tickets asignados a ti</strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

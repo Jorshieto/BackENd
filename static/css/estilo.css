@@ -1,0 +1,269 @@
+/* Fondo de la página web */
+.Fondo {
+  background-image: url('/static/img/fondo.png');
+  background-repeat: no-repeat; /* Hace que la imagen de fondo no se repita */
+  background-position: center center; /* Centro horizontal y vertical */
+  background-attachment: fixed; /* Hace que la imagen de fondo sea fija */
+  background-size: cover; /* Hace que la imagen cubra todo el fondo */
+}
+
+/*------------------------------CSS 1_PaginaInicio------------------------------*/
+
+/* Estilos para los títulos de las secciones */
+.title {
+  font-size: 50px; /* Tamaño de fuente */
+  font-weight: 600; /* Peso de la fuente */
+  text-align: center; /* Alineación centrada */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  color: #fff; /* Color del texto */
+  padding-bottom: 30px;
+}
+
+/* Estilos para las secciones de contenido */
+.content {
+  padding-top: 100px;
+  display: flex; /* Flexbox para centrar el contenido */
+  flex-direction: column; /* Dirección en columna */
+  justify-content: center; /* Centrado verticalmente */
+  align-items: center; /* Centrado horizontalmente */
+}
+
+/* Estilos para el botón en la sección de contacto */
+.last-btn {
+  margin-bottom: 90px; /* Margen inferior para espaciado */
+}
+
+.texto {
+  font-size: 20px; /* Tamaño de fuente */
+  font-weight: 600; /* Peso de la fuente */
+  text-align: center; /* Alineación centrada */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  color: #fff; /* Color del texto */
+  margin: 0  105px; /* Margen lateral (izquierda y derecha) */
+
+}
+
+/*------------------------------CSS Barra de Navegacion------------------------------*/
+
+.barra_navegacion {
+  display: flex; /* Establece que la barra de navegación es un contenedor flex */
+  justify-content: space-between; /* Distribuye el espacio entre el logo y los enlaces */
+  align-items: center; /* Alinea verticalmente el contenido al centro */
+  background-color: #333; /* Color de fondo opcional */
+  position: fixed; /* Fija la barra de navegación */
+  top: 0; /* Coloca la barra en la parte superior */
+  width: 100%; /* Asegúrate de que la barra ocupe todo el ancho */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional para darle profundidad */
+}
+
+.logo-nav {
+  height: 60px; /* Ajustar la altura del logo según sea necesario */
+  margin-left: 20px; /* Espacio a la izquierda para separar el logo del borde */
+}
+
+.nav-links {
+  display: flex; /* Asegúrate de que los enlaces estén alineados horizontalmente */
+  margin-right: 20px; /* Espacio a la derecha para que no esté pegado al borde */
+}
+
+.nav-links a {
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.nav-links a:hover {
+  background: #3f3f3f;   
+}
+
+/* Estilo para pantallas pequeñas */
+@media (max-width: 768px) { 
+  .barra_navegacion {
+      padding: 8px 15px; /* Reducir el espacio de padding */
+  }
+
+  .logo-nav {
+      max-width: 80px; /* Reducir el tamaño del logo */
+  }
+
+  .nav-links {
+      gap: 10px; /* Reducir la separación entre enlaces */
+  }
+
+  .nav-links a {
+      padding: 6px 8px; /* Reducir padding en los enlaces */
+      font-size: 14px; /* Reducir tamaño de fuente en pantallas pequeñas */
+  }
+}
+
+.btn.cerrar-sesion {
+  background-color: red; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  padding: 10px 15px; /* Espaciado interno del botón */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  margin-left: auto; /* Empuja el botón a la derecha */
+}
+
+.btn.cerrar-sesion:hover {
+  background-color: darkred; /* Color de fondo al pasar el ratón */
+}
+
+/*------------------------------CSS 2_Login------------------------------*/
+
+.form-container {
+  max-width: 400px; /* Ancho máximo para alinear el mensaje y el formulario */
+  width: 100%;
+}
+
+.formulario-registro {
+  width: 100%; /* Alinea el formulario con el ancho del mensaje */
+  max-width: 400px; /* Ancho máximo de 400px para mantener la legibilidad */
+  background-color: rgba(36, 48, 60, 0.85); /* Color de fondo */
+  padding: 30px; /* Relleno interior */
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white; /* Color del texto */
+  box-shadow: 7px 13px 37px #000; /* Sombra para el formulario */
+}
+
+/* Estilo para los controles del formulario */
+.controls {
+  width: 100%; /* Ancho */
+  background: #24303c; /* color de fondo */
+  padding: 10px; /* Relleno interior */
+  border-radius: 4px;
+  margin-bottom: 16px; /* Espacio inferior */
+  border: 1px solid #1f53c5; /* Borde del control */
+  font-family: 'calibri';
+  font-size: 18px; /* Tamaño de fuente */
+  color: white; /* Color del texto */
+}
+
+/* Estilo para los botones del formulario */
+.boton {
+  width: 100%; /* Ancho */
+  background: #1f53c5; /* Color de fondo */
+  border: none; /* Sin borde */
+  padding: 12px; /* Relleno interior */
+  color: white; /* Color del texto */
+  margin: 16px 0; /* Margen superior e inferior */
+  font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Estilo para el encabezado del formulario */
+.inicio {
+  text-align: center; /* Centra el texto */
+  margin-bottom: 20px; /* Espacio inferior */
+  color: white; /* Color del texto */
+}
+
+/*------------------------------CSS 3_Registro------------------------------*/
+
+/* Estilo para el formulario de registro */
+.formulario_login {
+  max-width: 400px;
+  background-color: rgba(36, 48, 60, 0.85); /* Color de fondo */
+  padding: 30px; /* Relleno interior */
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white; /* Color del texto */
+  box-shadow: 7px 13px 37px #000; /* Sombra para el formulario */
+}
+
+/* Estilos para cada campo de entrada */
+.formulario_login input[type="text"],
+.formulario_login input[type="email"],
+.formulario_login input[type="password"] {
+  width: 100%; /* Ancho completo del contenedor */
+  padding: 10px; /* Relleno interno */
+  margin-bottom: 10px; /* Espacio inferior entre campos */
+  border: 1px solid #ced4da; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  color: #495057; /* Color de texto */
+  box-sizing: border-box; /* Para asegurarse de que el padding no se extienda más allá */
+}
+
+/* Estilos para el botón de enviar */
+.formulario_login button[type="submit"] {
+  width: 100%; /* Ancho completo */
+  padding: 12px; /* Espacio interno */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+  color: #fff; /* Color del texto */
+  background-color: #007bff; /* Color de fondo */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Cambiar el color del botón al pasar el cursor */
+.formulario_login button[type="submit"]:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el cursor */
+}
+
+/*-------------------------------------- es mas que nada el formulario de registro de tickets------------------------------------------- */
+
+.img-corporativa {
+  padding-top: 150px; /* Ajusta este valor para mover la imagen hacia abajo */
+  padding-bottom: 50px;
+  max-width: 500px; /* Ajusta el ancho máximo */
+  max-height: 400px; /* Ajusta la altura máxima */
+  width: auto; /* Mantiene la relación de aspecto */
+  height: auto; /* Mantiene la relación de aspecto */
+}
+
+.button-container {
+  margin-top: 10px;
+  display: flex; /* Utiliza flexbox */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.btn-primary {
+  text-align: center; /* Centra horizontalmente */
+  background-color: #1f53c5;
+  padding: 10px 20px; /* Añade algo de espacio */
+  border: #000;
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.btn-primary:hover {
+  background-color: #2d6df6; /* Cambia el color de fondo al pasar el ratón */
+}
+
+.card .form-control {
+  background-color: #41556a; /* Color de fondo del input */
+  border: 2px solid #4f6983; /* Color del borde */
+  color: #ffffff
+}
+/* Estilo para el cuerpo de la tarjeta */
+.card-body {
+  padding: 20px; /* Espacio interno */
+}
+
+label {
+  font-weight: bold; /* Negrita para las etiquetas */
+  color: #ffffff;
+}
+/* Estilos para errores */
+
+textarea.form-control {
+  height: 80px; /* Ajusta según lo necesario */
+}
+.Formcolor{
+  background-color: #24303c; /* Color de fondo */
+  color: #ffffff
+}
+
+.Tituloticket{
+  margin-left: 60px;
+  color: white;
+}
+
+.errorlist li {
+  color: red;
+
+}
