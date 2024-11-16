@@ -1,0 +1,41 @@
+<!--en si es lo mismo que el 5_formCrear por que lo reutilice-->
+{% extends '0_base.html' %}
+{% load static %}
+
+{% block content %}
+<nav class="barra_navegacion">
+    <img src="{% static 'img/sistema.png' %}" alt="Logo de Solventa" class="logo-nav">
+    <h1 class="text-center Tituloticket">Actualizar Ticket</h1>
+    <div class="nav-links">
+        <a href="{% url 'crud' %}">Cancelar</a>
+    </div>
+</nav>
+
+<div class="card mx-auto" style="max-width: 400px; top: 70px; position: relative;">
+    <div class="text-center Formcolor">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% for field in form %}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger">
+                                {% for error in field.errors %}
+                                    {% if error != "Este campo es obligatorio." %}
+                                        <p>{{ error }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="button-container">
+                        <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

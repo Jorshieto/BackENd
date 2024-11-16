@@ -48,8 +48,12 @@
                             <th>Servicio</th>
                             <th>Prioridad</th>
                             <th>Encargado</th>
-                            <th>Descripción del Problema</th>
+                            <th>Descripción del Problema<nav></nav></th>
+                            <th>Estado del Ticket</th>
+                            <th>Solucion aplicada por Soporte</th>
+                            <th>Satisfaccion Cliente</th>
                             <th>Acciones</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -64,7 +68,10 @@
                                 <td>{{ ticket.servicio }}</td>
                                 <td>{{ ticket.prioridad }}</td>
                                 <td>{{ ticket.encargado }}</td>
-                                <td>{{ ticket.descripcion_del_problema }}</td>
+                                <td>{{ ticket.descripcion}}</td>
+                                <td>{{ ticket.estado}}</td>
+                                <td>{{ ticket.retroalimentacion_soporte}}</td>
+                                <td>{{ ticket.satisfaccion_cliente}}</td>
                                 <td>
                                 <!--esto los deben ver los admin y los jefe_area-->
                                         <a href="#" class="btn btn-success btn-sm" onclick="confirmAction('actualizar', '{{ ticket.id }}')">

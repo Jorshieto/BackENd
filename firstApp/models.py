@@ -2,34 +2,46 @@ from django.db import models
 
 class Ticket(models.Model):
 
-    #estos de aqui funcionan como desplegables 
+    # Estos son los valores para los desplegables
     TIPOS_SERVICIO = [
-        ('impresora', 'Impresion'),
+        ('impresora', 'Impresión'),
         ('software', 'Software'),
         ('servidor', 'Servidor'),
-        ('hardware', 'Hardware')
+        ('hardware', 'Hardware'),
     ]
     
     PRIORIDADES = [
         ('alta', 'Alta'),
         ('media', 'Media'),
-        ('baja', 'Baja')
+        ('baja', 'Baja'),
     ]
     
     ENCARGADOS = [
         ('maniquil', 'Maria Aniquil'),
         ('gsoto', 'Guido Soto'),
-        ('jmunoz', 'Jorge Munoz')
+        ('jmunoz', 'Jorge Munoz'),
     ]
 
     AREAS = [
-        ('recursos_humanos', 'Recursos Humanos'),
         ('finanzas', 'Finanzas'),
-        ('marketing', 'Marketing '),
+        ('marketing', 'Marketing'),
         ('ventas', 'Ventas'),
-        ('atencion_al_cliente', 'Atencion al Cliente')
     ]
-    #son los tipos de datos del formulario
+
+    ESTADOS = [
+        ('abierto', 'Abierto'),
+        ('cerrado', 'Cerrado'),
+        ('en_proceso', 'En Proceso'),
+    ]    
+
+    SATISFACCION = [
+        ('alta', 'Alta'),
+        ('media', 'Media'),
+        ('baja', 'Baja'),
+        ('----' , '----')
+    ]
+    
+    # Campos del modelo
     nombre = models.CharField(max_length=50)
     fono = models.CharField(max_length=9)
     email = models.EmailField()
@@ -37,6 +49,12 @@ class Ticket(models.Model):
     servicio = models.CharField(max_length=50, choices=TIPOS_SERVICIO)
     prioridad = models.CharField(max_length=50, choices=PRIORIDADES)
     encargado = models.CharField(max_length=50, choices=ENCARGADOS)
-    descripcion_del_problema = models.TextField()
+    descripcion = models.TextField(null=True, blank=True)  # Campo opcional
+
+    # Estado: Definir valor por defecto 'abierto', que es un valor válido en ESTADOS
+    estado = models.CharField(max_length=20, choices=ESTADOS, default='abierto')  # El valor por defecto debe ser uno de los valores en ESTADOS
+    retroalimentacion_soporte = models.TextField(null=True, blank=True)  # Campo opcional
+    satisfaccion_cliente = models.CharField(max_length=10, choices=SATISFACCION, default='----')
+
     def __str__(self):
         return self.nombre
