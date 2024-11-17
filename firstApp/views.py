@@ -1,9 +1,13 @@
 from django import forms
 from django.shortcuts import render , redirect
-from securityApp.forms import TicketForm #se llaama el fromulario del ticket desde el securityApp
+from securityApp.forms import TicketForm ,Ticketsoporte#se llaama el fromulario del ticket desde el securityApp
 from firstApp.models import Ticket
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
+
+def crudSoporte(request):
+    return render(request,'4.1_CrudSoporte.html')
 
 # Vistas de base
 def templateBase(request):
@@ -56,9 +60,26 @@ def actualizar_ticket(request, id):
 
     return render(request, '6_formActualizar.html', {'form': form})
 
+@login_required
+def actualizar_ticket_soporte(request, id):
+    ticket = Ticket.objects.get(id=id)
+    form = Ticketsoporte(instance=ticket)
+
+    if request.method == 'POST':
+        form = Ticketsoporte(request.POST, instance=ticket)
+        if form.is_valid():
+            form.save()
+            return redirect('crud_soporte')  # Puedes redirigir al lugar que necesites
+
+    return render(request, '7_formSoporte.html', {'form': form})
+
 # Vista para eliminar un ticket
 @login_required
 def eliminar_ticket(request, id):
     ticket = Ticket.objects.get(id=id)
     ticket.delete()
     return redirect('crud')
+
+def cerrar_sesion(request):
+    logout(request)  # Cierra la sesión
+    return redirect('login')  # Redirige a la página de login después de cerrar sesión

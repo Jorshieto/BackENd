@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
 from securityApp.forms import RegistroUsuario #llamo el formulario desde el securityApp
 from django.contrib.auth import logout
 
@@ -32,6 +33,7 @@ def login_usuario(request):
     
     return render(request, '2_Login.html')  # Renderiza la plantilla de inicio de sesión
 
+@login_required
 def registro(request):
     if request.method == 'POST':
         form = RegistroUsuario(request.POST)#Crea una instancia del formulario con los datos del POST

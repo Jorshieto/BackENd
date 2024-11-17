@@ -6,6 +6,20 @@ from firstApp.models import Ticket
 import re
 import unicodedata
 
+class Ticketsoporte(forms.ModelForm):
+    class Meta:
+        model = Ticket
+        fields = ['estado', 'retroalimentacion_soporte']
+        widgets = {
+            'estado': forms.Select(attrs={'class': 'form-control'}),
+            'retroalimentacion_soporte': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        
+        }
+        # Personaliza los campos del formulario:
+        # - 'estado' como <select> con clase 'form-control'.
+        # - 'retroalimentacion_soporte' como <textarea> con clase 'form-control' y 3 filas.
+        # Aplica estilo Bootstrap a los campos.
+
 # -------- Formularios para loginApp --------
 
 # Define los grupos disponibles para el usuario

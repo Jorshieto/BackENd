@@ -34,13 +34,11 @@
                             <th>Área</th>
                             <th>Servicio</th>
                             <th>Prioridad</th>
-                            <th>Encargado</th>
+                            <th>Encargado</th> <!-- si logramos condicionar que solo los encargados vean los tickets que se les asignan eliminar-->
                             <th>Descripción del Problema<nav></nav></th>
                             <th>Estado del Ticket</th>
                             <th>Solucion aplicada por Soporte</th>
-                            <th>Satisfaccion Cliente</th>
-                            <th>Acciones</th>
-
+                            <th>Cambios</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,12 +56,10 @@
                                 <td>{{ ticket.descripcion}}</td>
                                 <td>{{ ticket.estado}}</td>
                                 <td>{{ ticket.retroalimentacion_soporte}}</td>
-                                <td>{{ ticket.satisfaccion_cliente}}</td>
                                 <td>
-                                <!--cambiar y mostrar ultimas 3 columnas del formulario-->
-                                        <a href="#" class="btn btn-success btn-sm" onclick="confirmAction('actualizar', '{{ ticket.id }}')">
-                                            <i>✏️</i>
-                                        </a>
+                                    <a href="{% url 'actualizar_ticket_soporte' ticket.id %}" class="btn btn-success btn-sm" onclick="confirmAction('actualizar', '{{ ticket.id }}')">
+                                        <i>✏️</i>
+                                    </a>  
                                 </td>
                             </tr>
                             {% endfor %}
